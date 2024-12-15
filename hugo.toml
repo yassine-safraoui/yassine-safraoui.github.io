@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/' #TODO: TO FILL AFTER DEPLOYMENT
+baseURL = 'yassine-safraoui.github.io/'
 languageCode = 'en-us'
 title = 'Yassine Safraoui Portfolio'
 theme = 'hugo-profile'
