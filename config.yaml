@@ -16,7 +16,7 @@ pagination:
   pagerSize: 3
 enableRobotsTXT: true
 # disqusShortname: your-disqus-shortname
-# googleAnalytics: G-MEASUREMENT_ID
+googleAnalytics: G-PBJGV27X7V
 
 markup:
   goldmark:
