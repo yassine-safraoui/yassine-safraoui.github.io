@@ -18,6 +18,7 @@ enableRobotsTXT: true
 # disqusShortname: your-disqus-shortname
 googleAnalytics: G-PBJGV27X7V
 
+
 markup:
   goldmark:
     renderer:
@@ -54,10 +55,15 @@ markup:
     #   weight: 2
 
 params:
+
   title: "Yassine Portfolio"
   description: Yassine Safraoui Portfolio
   # staticPath: ""  # The path to serve the static files from
   favicon: "/fav.png"
+  # Microsoft Clarity tracking ID
+  services:
+    microsoft_clarity:
+      id: pmpq5yecej
 
   # Whether to serve bootstrap css and js files from CDN or not. Can be set to true, "css" or "js" to choose between
   # serving both, only the css, or only the js files through the CDN. Any other value will make so that CDN is not used.
