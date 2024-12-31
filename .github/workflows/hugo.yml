@@ -51,8 +51,10 @@ jobs:
       - name: Pull theme submodule
         run: |
           git submodule update --init --recursive --remote
-      - name: Get Hugo Modules
-        run: hugo mod get -u ./...
+      - name: Add Microsoft Clarity Hugo module
+        run: |
+          hugo mod init github.com/hugomods/microsoft-clarity
+          hugo mod get -u ./...
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
