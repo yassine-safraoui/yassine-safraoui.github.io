@@ -53,6 +53,7 @@ jobs:
           git submodule update --init --recursive --remote
       - name: Add Microsoft Clarity Hugo module
         run: |
+          hugo mod init github.com/hugomods/microsoft-clarity
           hugo mod get -u ./...
       - name: Build with Hugo
         env:
