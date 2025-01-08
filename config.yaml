@@ -326,9 +326,6 @@ params:
           - name: "Multiprocessing"
           - name: "Mutex"
           - name: "Semaphore"
-          - name: "Multiprocessing"
-          - name: "Mutex"
-          - name: "Semaphore"
       - title: Chamilo Sync Kotling Android App
         content: Developed a Kotlin Android app to synchronize contents of courses from Chamilo with Local storage. Used Dagger Hilt for dependency injection, OKHttp for network requests, Room and Coroutines for asynchronous programming.
         badges:
