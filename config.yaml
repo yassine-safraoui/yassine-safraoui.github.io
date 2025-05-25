@@ -138,8 +138,7 @@ params:
     enable: true
     intro: "Hi, my name is"
     title: "Yassine Safraoui."
-    subtitle: "I'm a [SEOC](https://phelma.grenoble-inp.fr/en/studies/master-s-degree-in-engineering-grenoble-inp-phelma-embedded-systems-and-connected-devices-seoc#page-presentation) engineering student @Phelma."
-    content: "Passionate about embedded systems and connected objects. I'm looking for a 6 months internship in this domain"
+    subtitle: "I'm a final-year [SEOC](https://phelma.grenoble-inp.fr/en/studies/master-s-degree-in-engineering-grenoble-inp-phelma-embedded-systems-and-connected-devices-seoc#page-presentation) engineering student @Phelma. I'm looking for a job in embedded systems and connected objects."
     image: /fav.png
     bottomImage:
       enable: true
@@ -163,22 +162,35 @@ params:
     title: "About Me"
     image: "/images/me.png"
     content: |-
-      I am an engineering student specialized in Embedded Systems and Connected Objects @Phelma - Grenoble INP. I have a background in computer science and digital electronics. I am currently looking for a 6 months last year internship,
+      I am an engineering student specialized in Embedded Systems and Connected Objects @Phelma - Grenoble INP. I have a background in computer science and digital electronics. I am currently looking for a job in the field as I will be graduating in 2025.
 
     skills:
       enable: true
       title: "here are the domains I'm interested in:"
       items:
-        - "Realtime Linux programming: FreeRTOS"
+        - "Realtime Linux programming: FreeRTOS and Zephyr"
         - C/C++ Development
-        - Control systems
-        - "HLS Design: VHDL"
+        - UltraWideBand (UWB) technology
+        - AOSP (Android Open Source Project) C/C++ development
 
   # Experience
   experience:
     enable: true
     title: "Experiences"
     items:
+      - job: "Software Developer"
+        company: Qorvo
+        companyUrl: "https://www.qorvo.com"
+        date: "February 2025 - August 2025"
+        info:
+          enable: true
+          content: 6 Months Internship
+        featuredLink:
+          enable: false
+          name: "View the project"
+          url: "https://example.com"
+        content: |-
+          Failure monitoring and debugging across the software stack of the Qorvo QM35 UWB chip and its integration in Android devices with C/C++.
       - job: "Software Developer"
         company: "Laboratoire d'Informatique de Grenoble LIG"
         companyUrl: "https://www.liglab.fr/fr"
