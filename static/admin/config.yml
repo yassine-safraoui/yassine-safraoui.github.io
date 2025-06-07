@@ -6,8 +6,8 @@ media_folder: "static/images/uploads"
 public_folder: "/images/uploads"
 
 collections:
-  - name: "drafts"
-    label: "Drafts"
+  - name: "draft"
+    label: "Draft"
     folder: "content/drafts"
     create: true
     slug: "{{slug}}"
