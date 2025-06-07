@@ -126,10 +126,10 @@ params:
       showOnScrollUp: true
     enableSeparator: false
     menus:
-      disableAbout: false
-      disableExperience: false
-      disableEducation: false
-      disableProjects: false
+      disableAbout: true
+      disableExperience: true
+      disableEducation: true
+      disableProjects: true
       disableAchievements: true
       disableContact: false
 
