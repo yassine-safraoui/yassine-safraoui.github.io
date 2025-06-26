@@ -235,7 +235,7 @@ params:
           name: "Lycée Mohammed VI d'excellence - Ben Guerir"
           url: "https://www.firsi.org/soutien-a-l-enseignement-d-excellence/lycee-mohammed-vi-d-excellence"
         date: "2020 - 2022"
-        content: Intensive undergraduate studies Technical Sciences and Technologies specialization(TSI). Includes a strong foundation in mathematics, electronics and control systems.
+        content: Intensive undergraduate studies Technical Sciences and Technologies specialization (TSI). Includes a strong foundation in mathematics, electronics and control systems.
       - title: "Baccalauréat STE"
         school:
           name: "Lycée Les Orangers - Rabat"
@@ -290,7 +290,7 @@ params:
           - name: "Mockito"
           - name: "Gameboy assembly"
       - title: C Spell Checker
-        content: "Wroked in a team of 4 on implementating and benchmarking various spellchecking algorithms and data structures with C.\ne.g: resizable arrays, linked lists, hash sets, trees, Tries. DFS, BFS."
+        content: "worked in a team of 4 on implementing and benchmarking various spellchecking algorithms and data structures with C.\ne.g: resizable arrays, linked lists, hash sets, trees, Tries. DFS, BFS."
         badges:
           - name: "School project"
             color: "text-bg-primary"
@@ -299,7 +299,7 @@ params:
           - name: "Algorithms"
           - name: "Data structures"
       - title: Pathfinding algorithms in C
-        content: "Wroked in a team of 3 on implementating different Pathfinding algorithms(DFS, BFS and Dijkstra) in C and benchmarking them on a map of train stations."
+        content: "worked in a team of 3 on implementing different Pathfinding algorithms(DFS, BFS and Dijkstra) in C and benchmarking them on a map of train stations."
         badges:
           - name: "School project"
             color: "text-bg-primary"
@@ -317,7 +317,7 @@ params:
           - name: "OOP"
           - name: "Event-driven programming"
       - title: VHDL Design of a Digital Filter
-        content: Worked in a team of 2 on the Implementation of the Design of an FSM-based VHDL Filter. We used ModelSim to simulate the design during development, SpyGlass to validate the synthesizability of the design, Precision RTL to synthetise the design and Xilinx ISE for routing and placement and tested the design on a FPGA Xilinx Spartan3 board.
+        content: Worked in a team of 2 on the Implementation of the Design of an FSM-based VHDL Filter. We used ModelSim to simulate the design during development, SpyGlass to validate the synthesizability of the design, Precision RTL to synthetise the design and Xilinx ISE for routing and placement and tested the design on an FPGA Xilinx Spartan3 board.
         badges:
           - name: "School project"
             color: "text-bg-primary"
@@ -327,7 +327,7 @@ params:
           - name: "Precision RTL"
           - name: "Xilinx ISE"
       - title: C Messaging Client
-        content: "Wroked in a team of 2 on implementating a messaging client for an existing server in C using System V IPC mechanisms."
+        content: "worked in a team of 2 on implementing a messaging client for an existing server in C using System V IPC mechanisms."
         badges:
           - name: "School project"
             color: "text-bg-primary"
@@ -338,7 +338,7 @@ params:
           - name: "Multiprocessing"
           - name: "Mutex"
           - name: "Semaphore"
-      - title: Chamilo Sync Kotling Android App
+      - title: Chamilo Sync Kotlin Android App
         content: Developed a Kotlin Android app to synchronize contents of courses from Chamilo with Local storage. Used Dagger Hilt for dependency injection, OKHttp for network requests, Room and Coroutines for asynchronous programming.
         badges:
           - name: "Kotlin"
