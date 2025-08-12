@@ -195,7 +195,9 @@ params:
           - name: "Perfetto"
           - name: "Google Protocol Buffers"
         content: |-
-          Failure monitoring and debugging across the software stack of the Qorvo QM35 UWB chip and its integration in Android devices with C/C++.
+          During my 6-month internship at Qorvo, I designed and implemented two key systems to improve debugging and failure monitoring for the QM35 Ultra-Wideband (UWB) chip integrated into Android devices:
+            - **High-Performance UCI Packet Logger**: Replaced the existing logcat-based logging with a PCAPNG-based solution compatible with Wireshark, achieving 10–20× faster logging (up to 80× in some cases).
+            - **Configurable Error Monitoring System**: Developed a macro-based detection engine capable of identifying failure scenarios in real time, dynamically configurable via Protocol Buffers, and generating detailed debug reports.
       - job: "Software Developer"
         company: "Laboratoire d'Informatique de Grenoble LIG"
         companyUrl: "https://www.liglab.fr/fr"
