@@ -459,7 +459,7 @@ params:
           - name: "Precision RTL"
           - name: "Xilinx ISE"
       - title: C Messaging Client
-        content: "worked in a team of 2 on implementing a messaging client for an existing server in C using System V IPC mechanisms."
+        content: "Worked in a team of 2 on implementing a messaging client for an existing server in C using System V IPC mechanisms."
         badges:
           - name: "School project"
             color: "text-bg-primary"
