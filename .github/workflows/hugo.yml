@@ -53,7 +53,7 @@ jobs:
       - name: Install Node.js dependencies
         run: |
           if [ -f pnpm-lock.yaml ]; then
-        pnpm install --frozen-lockfile
+            pnpm install --frozen-lockfile
           elif [ -f package-lock.json ] || [ -f npm-shrinkwrap.json ]; then
         npm ci
           else
