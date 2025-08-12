@@ -448,8 +448,8 @@ params:
           - name: "Java"
           - name: "OOP"
           - name: "Event-driven programming"
-      - title: VHDL Design of a Digital Filter
-        content: Worked in a team of 2 on the Implementation of the Design of an FSM-based VHDL Filter. We used ModelSim to simulate the design during development, SpyGlass to validate the synthesizability of the design, Precision RTL to synthetise the design and Xilinx ISE for routing and placement and tested the design on an FPGA Xilinx Spartan3 board.
+      - title: FSM-Based Digital Filter in VHDL
+        content: Designed and implemented an FSM-based digital filter in VHDL as part of a two-person team. Simulated with ModelSim, verified synthesizability with SpyGlass, synthesized with Precision RTL, and deployed on a Xilinx Spartan-3 FPGA using Xilinx ISE. Successfully tested and validated the design on hardware.
         badges:
           - name: "School project"
             color: "text-bg-primary"
