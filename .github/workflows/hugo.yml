@@ -55,10 +55,10 @@ jobs:
           if [ -f pnpm-lock.yaml ]; then
             pnpm install --frozen-lockfile
           elif [ -f package-lock.json ] || [ -f npm-shrinkwrap.json ]; then
-        npm ci
-          else
-        echo "No lockfile found, skipping dependency installation."
-          fi
+          npm ci
+            else
+          echo "No lockfile found, skipping dependency installation."
+            fi
       - name: Pull theme submodule
         run: |
           git submodule update --init --recursive --remote
