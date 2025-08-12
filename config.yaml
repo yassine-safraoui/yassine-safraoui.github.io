@@ -126,10 +126,10 @@ params:
       showOnScrollUp: true
     enableSeparator: false
     menus:
-      disableAbout: true
-      disableExperience: true
-      disableEducation: true
-      disableProjects: true
+      disableAbout: false
+      disableExperience: false
+      disableEducation: false
+      disableProjects: false
       disableAchievements: true
       disableContact: false
 
@@ -185,10 +185,15 @@ params:
         info:
           enable: true
           content: 6 Months Internship
-        featuredLink:
-          enable: false
-          name: "View the project"
-          url: "https://example.com"
+        badges:
+          - name: "C++"
+          - name: "AOSP"
+          - name: "Zephyr"
+          - name: "Python"
+          - name: "UWB"
+          - name: "Benchmarking"
+          - name: "Perfetto"
+          - name: "Google Protocol Buffers"
         content: |-
           Failure monitoring and debugging across the software stack of the Qorvo QM35 UWB chip and its integration in Android devices with C/C++.
       - job: "Software Developer"
@@ -198,25 +203,33 @@ params:
         info:
           enable: true
           content: 10 Weeks Internship
-        featuredLink:
-          enable: false
-          name: "View the project"
-          url: "https://example.com"
+        badges:
+          - name: "SQL"
+          - name: "Postgres"
+          - name: "GraphQL"
+          - name: "Hasura"
+          - name: "Moodle"
+          - name: "PHP"
+          - name: "REST APIs"
+          - name: "NextJS"
+          - name: "Convex"
         content: |-
           Investigating migration from the existing [Moodle REST API](https://docs.moodle.org/dev/Web_service_API_functions) to a Hasura GraphQL API to eliminate over-fetching and under-fetching of data.
-      - job: "Software Developer Intern"
+      - job: "Software Developer"
         company: "VITsolutions"
         companyUrl: "https://www.vitsolutions.eu/"
         date: "July 2023 - August 2023"
         info:
-          enable: false
-        featuredLink:
-          enable: false
-          name: "View the project"
-          url: "https://example.com"
+          enable: true
+          content: 8 Weeks Internship
+        badges:
+          - name: "React"
+          - name: "SharePoint"
+          - name: "Microsoft POWERAPPS"
+          - name: "PHP"
         content: |-
-          - Built a Sharepoint React Gantt chart webpart for a Sharepoint site.
-          - Developed POWERAPP Application for a client.
+          - Built a SharePoint React Gantt chart webpart for a SharePoint site.
+          - Developed Microsoft POWERAPPS Application for a client.
 
   # Education
   education:
@@ -264,12 +277,129 @@ params:
         content: Contributed to a open source project.
         url: https://example.com
 
+  skills:
+    enable: true
+    title: "Skills"
+    categories:
+      index: true
+      items:
+        - title: "Embedded Systems & Low-Level Development"
+          skills:
+            index: true
+            items:
+              - name: "C"
+                proficiency: 90
+                learnedFrom:
+                  index: true
+                  items:
+                    - type: "Project"
+                      name: "C Spell Checker"
+                    - type: "Project"
+                      name: "C Messaging Client"
+                    - type: "Project"
+                      name: "Pathfinding algorithms in C"
+                    - type: "Project"
+                      name: "NXP CUP CAR Control Software"
+              - name: "Microcontroller Programming"
+                proficiency: 80
+                learnedFrom:
+                  index: true
+                  items:
+                    - type: "Project"
+                      name: "NXP CUP CAR Control Software"
+                    - type: "School"
+                      name: "PHELMA Coursework (TI MSP430)"
+                    - type: "School"
+                      name: "Preparatory Classes - TIPE (Arduino)"
+              - name: "Multithreading & Thread Communication"
+                proficiency: 55
+                learnedFrom:
+                  index: true
+                  items:
+                    - type: "Project"
+                      name: "C Messaging Client"
+              - name: "GDB / Valgrind (Debugging)"
+                proficiency: 70
+                learnedFrom:
+                  index: true
+                  items:
+                    - name: "Qorvo Internship"
+                    - type: "School"
+                      name: "PHELMA Projects"
+              - name: "C++"
+                proficiency: 60
+                learnedFrom:
+                  index: true
+                  items:
+                    - name: "Qorvo Internship"
+              - name: "Zephyr"
+                proficiency: 30
+                learnedFrom:
+                  index: true
+                  items:
+                    - name: "Qorvo Internship"
+              - name: "FreeRTOS"
+                proficiency: 60
+                learnedFrom:
+                  index: true
+                  items:
+                    - type: "Project"
+                      name: "NXP CUP CAR Control Software"
+              - name: "Control Systems / State Representation"
+                proficiency: 40
+                learnedFrom:
+                  index: true
+                  items:
+                    - type: "Project"
+                      name: "NXP CUP CAR Control Software"
+
+        - title: "Software Engineering & Programming Fundamentals"
+          skills:
+            index: true
+            items:
+              - name: "Object-Oriented Programming (OOP)"
+                proficiency: 70
+                learnedFrom:
+                  index: true
+                  items:
+                    - type: "Project"
+                      name: "Multi-agent system in Java"
+                    - name: "Qorvo Internship"
+                    - type: "Project"
+                      name: "Java based DECA Compiler"
+              - name: "Benchmarking"
+                proficiency: 70
+                learnedFrom:
+                  index: true
+                  items:
+                    - type: "Project"
+                      name: "C Spell Checker"
+                    - name: "Qorvo Internship"
+                    - type: "Project"
+                      name: "C Pathfinding algorithms"
+              - name: "Python"
+                proficiency: 50
+                learnedFrom:
+                  index: true
+                  items:
+                    - type: "School"
+                      name: "Preparatory Classes"
+                    - name: "Qorvo Internship"
+                    - name: "Leetcode"
+              - name: "Rust"
+                proficiency: 30
+                learnedFrom:
+                  index: true
+                  items:
+                    - type: "Event"
+                      name: "Advent Of Code 2024"
+
   # projects
   projects:
     enable: true
     # title: "Custom Name"
     items:
-      - title: Control Software for NXP CUP CAR
+      - title: NXP CUP CAR Control Software
         content: Worked in a team of 2 to build C-based Realtime Control Software for the NXP CUP CAR using FreeRTOS. We used interrupts to handle sensors input (wheel encoders + 2D camera) and implemented feedback loop control algorithms to control wheel's speed and direction with FreeRTOS scheduled tasks.
         badges:
           - name: "School project"
