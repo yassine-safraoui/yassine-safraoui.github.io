@@ -417,6 +417,7 @@ params:
           - name: "School project"
             color: "text-bg-primary"
           - name: "Java"
+          - name: "Maven"
           - name: "ANTLR"
           - name: "JUnit 4"
           - name: "Mockito"
