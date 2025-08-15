@@ -449,6 +449,16 @@ params:
           - name: "Java"
           - name: "OOP"
           - name: "Event-driven programming"
+      - title: CVE Vulnerability Analysis and Reproduction
+        content: Worked in a team of 3 to analyze two real-world CVEs: [CVE-2024-23724](https://nvd.nist.gov/vuln/detail/CVE-2024-23724) and [CVE-2024-47175](https://nvd.nist.gov/vuln/detail/CVE-2024-47175). Reproduced the vulnerabilities in a controlled environment, developed proof-of-concept exploits, and delivered a technical report explaining their root causes, impact, and mitigation strategies.
+        badges:
+          - name: "School project"
+            color: "text-bg-primary"
+          - name: "CVE"
+          - name: "Docker"
+          - name: "Linux"
+          - name: "Security"
+          - name: "Vulnerability Analysis"
       - title: FSM-Based Digital Filter in VHDL
         content: Designed and implemented an FSM-based digital filter in VHDL as part of a two-person team. Simulated with ModelSim, verified synthesizability with SpyGlass, synthesized with Precision RTL, and deployed on a Xilinx Spartan-3 FPGA using Xilinx ISE. Successfully tested and validated the design on hardware.
         badges:
