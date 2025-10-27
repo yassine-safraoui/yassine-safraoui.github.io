@@ -423,7 +423,7 @@ params:
           - name: "Mockito"
           - name: "Gameboy assembly"
       - title: C Spell Checker
-        content: "worked in a team of 4 on implementing and benchmarking various spellchecking algorithms and data structures with C.\ne.g: resizable arrays, linked lists, hash sets, trees, Tries. DFS, BFS."
+        content: "Worked in a team of 4 on implementing and benchmarking various spellchecking algorithms and data structures with C.\ne.g: resizable arrays, linked lists, hash sets, trees, Tries. DFS, BFS."
         badges:
           - name: "School project"
             color: "text-bg-primary"
@@ -432,7 +432,7 @@ params:
           - name: "Algorithms"
           - name: "Data structures"
       - title: Pathfinding algorithms in C
-        content: "worked in a team of 3 on implementing different Pathfinding algorithms(DFS, BFS and Dijkstra) in C and benchmarking them on a map of train stations."
+        content: "Worked in a team of 3 on implementing different Pathfinding algorithms(DFS, BFS and Dijkstra) in C and benchmarking them on a map of train stations."
         badges:
           - name: "School project"
             color: "text-bg-primary"
@@ -442,7 +442,7 @@ params:
           - name: "BFS"
           - name: "Dijkstra"
       - title: Simulating a Multi-agent system in Java
-        content: Simulated multi-agent systems in Java Cellular Automata and Boids with predator-prey behavior, showcasing object-oriented design and event-driven programming.
+        content: Worked in a team of 3 on simulating multi-agent systems in Java Cellular Automata and Boids with predator-prey behavior, showcasing object-oriented design and event-driven programming.
         badges:
           - name: "School project"
             color: "text-bg-primary"
