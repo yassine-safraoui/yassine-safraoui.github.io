@@ -138,7 +138,7 @@ params:
     enable: true
     intro: "Hi, my name is"
     title: "Yassine Safraoui."
-    subtitle: "I'm a final-year [SEOC](https://phelma.grenoble-inp.fr/en/studies/master-s-degree-in-engineering-grenoble-inp-phelma-embedded-systems-and-connected-devices-seoc#page-presentation) engineering student @Phelma. I'm looking for a job in embedded systems and connected objects."
+    subtitle: I’m an Embedded Systems ([SEOC](https://phelma.grenoble-inp.fr/en/studies/master-s-degree-in-engineering-grenoble-inp-phelma-embedded-systems-and-connected-devices-seoc#page-presentation)) engineering graduate from Grenoble INP – Phelma. I’m seeking a permanent position as an embedded systems engineer.
     image: /fav.png
     bottomImage:
       enable: true
@@ -162,7 +162,7 @@ params:
     title: "About Me"
     image: "/images/me.png"
     content: |-
-      I am an engineering student specialized in Embedded Systems and Connected Objects @Phelma - Grenoble INP. I have a background in computer science and digital electronics. I am currently looking for a job in the field as I will be graduating in 2025.
+      I am an engineering student specialized in Embedded Systems and Connected Devices @Phelma - Grenoble INP. I have a background in computer science and digital electronics. I am currently looking for a job in the field as I will be graduating in 2025.
 
     skills:
       enable: true
