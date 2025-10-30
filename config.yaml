@@ -162,7 +162,7 @@ params:
     title: "About Me"
     image: "/images/me.png"
     content: |-
-      I am an engineering student specialized in Embedded Systems and Connected Devices @Phelma - Grenoble INP. I have a background in computer science and digital electronics. I am currently looking for a job in the field as I will be graduating in 2025.
+      I’m an Embedded Systems engineer graduated from Grenoble INP – Phelma. My background spans low-level development, embedded software, and Linux-based systems, with additional experience in backend and full-stack development. I’m currently seeking a full-time position in embedded systems engineering.
 
     skills:
       enable: true
