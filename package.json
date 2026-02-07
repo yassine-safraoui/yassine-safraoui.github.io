@@ -6,9 +6,22 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "format": "prettier . --write",
+    "lint": "eslint --fix .",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.16.12"
+    "astro": "^5.17.1",
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "astro-eslint-parser": "^1.2.2",
+    "eslint": "^10.0.0",
+    "eslint-plugin-astro": "^1.5.0",
+    "eslint-plugin-better-tailwindcss": "^4.1.1",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-prettier": "^5.5.5",
+    "globals": "^17.3.0",
+    "typescript-eslint": "^8.54.0"
   }
 }
