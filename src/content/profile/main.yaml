@@ -214,7 +214,7 @@ projects:
       content: Worked in a team of 2 to build C-based Realtime Control Software for the NXP CUP CAR using FreeRTOS. We used interrupts to handle sensors input (wheel encoders + 2D camera) and implemented feedback loop control algorithms to control wheel's speed and direction with FreeRTOS scheduled tasks.
       badges:
         - name: "School project"
-          color: "text-bg-primary"
+          primary: true
         - name: "C"
         - name: "Realtime programming"
         - name: "FreeRTOS"
@@ -224,7 +224,7 @@ projects:
       content: Worked in a team of 5 mixed Phelma and Ensimag students to build a compiler for the DECA language. We also developed an extension of the language to facilitate the development of Gameboy games.
       badges:
         - name: "School project"
-          color: "text-bg-primary"
+          primary: true
         - name: "Java"
         - name: "Maven"
         - name: "ANTLR"
@@ -235,7 +235,7 @@ projects:
       content: "Worked in a team of 4 on implementing and benchmarking various spellchecking algorithms and data structures with C.\ne.g: resizable arrays, linked lists, hash sets, trees, Tries. DFS, BFS."
       badges:
         - name: "School project"
-          color: "text-bg-primary"
+          primary: true
         - name: "C"
         - name: "Makefile"
         - name: "Algorithms"
@@ -244,7 +244,7 @@ projects:
       content: "Worked in a team of 3 on implementing different Pathfinding algorithms(DFS, BFS and Dijkstra) in C and benchmarking them on a map of train stations."
       badges:
         - name: "School project"
-          color: "text-bg-primary"
+          primary: true
         - name: "C"
         - name: "Makefile"
         - name: "DFS"
@@ -254,7 +254,7 @@ projects:
       content: Worked in a team of 3 on simulating multi-agent systems in Java Cellular Automata and Boids with predator-prey behavior, showcasing object-oriented design and event-driven programming.
       badges:
         - name: "School project"
-          color: "text-bg-primary"
+          primary: true
         - name: "Java"
         - name: "OOP"
         - name: "Event-driven programming"
@@ -262,7 +262,7 @@ projects:
       content: "Worked in a team of 3 to analyze two real-world CVEs: [CVE-2024-23724](https://nvd.nist.gov/vuln/detail/CVE-2024-23724) and [CVE-2024-47175](https://nvd.nist.gov/vuln/detail/CVE-2024-47175). Reproduced the vulnerabilities in a controlled environment, developed proof-of-concept exploits, and delivered a technical report explaining their root causes, impact, and mitigation strategies."
       badges:
         - name: "School project"
-          color: "text-bg-primary"
+          primary: true
         - name: "CVE"
         - name: "Docker"
         - name: "Linux"
@@ -272,7 +272,7 @@ projects:
       content: Designed and implemented an FSM-based digital filter in VHDL as part of a two-person team. Simulated with ModelSim, verified synthesizability with SpyGlass, synthesized with Precision RTL, and deployed on a Xilinx Spartan-3 FPGA using Xilinx ISE. Successfully tested and validated the design on hardware.
       badges:
         - name: "School project"
-          color: "text-bg-primary"
+          primary: true
         - name: "VHDL"
         - name: "ModelSim"
         - name: "SpyGlass"
@@ -282,7 +282,7 @@ projects:
       content: "Worked in a team of 2 on implementing a messaging client for an existing server in C using System V IPC mechanisms."
       badges:
         - name: "School project"
-          color: "text-bg-primary"
+          primary: true
         - name: "C"
         - name: "CMake"
         - name: "System V IPC"

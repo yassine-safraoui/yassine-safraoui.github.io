@@ -74,7 +74,7 @@ export const profile = defineCollection({
           badges: z.array(
             z.object({
               name: z.string(),
-              color: z.string().optional(),
+              primary: z.boolean().default(false),
             }),
           ),
           links: z
