@@ -1,0 +1,336 @@
+title: "Yassine Portfolio"
+description: Yassine Safraoui Portfolio
+
+about: |
+  I’m an Embedded Systems engineer graduated from Grenoble INP – Phelma. My background spans low-level development, embedded software, and Linux-based systems, with additional experience in backend and full-stack development. I’m currently seeking a full-time position in embedded systems engineering. Here are the domains I'm interested in:
+    - Embedded systems development
+    - C/C++ and low-level debugging
+    - Linux-based systems
+    - Backend and full-stack experience
+
+# Experience
+experience:
+  title: "Experiences"
+  items:
+    - job: "Software Developer"
+      company: Qorvo
+      companyUrl: "https://www.qorvo.com"
+      date: "February 2025 - August 2025"
+      info:
+        enable: true
+        content: 6 Months Internship
+      badges:
+        - name: "C++"
+        - name: "AOSP"
+        - name: "Zephyr"
+        - name: "Python"
+        - name: "UWB"
+        - name: "Benchmarking"
+        - name: "Perfetto"
+        - name: "Google Protocol Buffers"
+      content: |-
+        Designed and implemented two key systems to improve debugging and failure monitoring for the QM35 Ultra-Wideband (UWB) chip integrated into Android devices:
+          - High-Performance UCI Packet Logger: Replaced the existing logcat-based logging with a **C++** PCAPNG-based solution compatible with Wireshark, achieving 10–20× faster logging (up to 80× in some cases).
+          - Configurable Error Monitoring System: Developed a macro-based detection engine capable of identifying failure scenarios in real time, dynamically configurable via Protocol Buffers, and generating detailed debug reports.
+
+    - job: "Software Developer"
+      company: "Laboratoire d'Informatique de Grenoble LIG"
+      companyUrl: "https://www.liglab.fr/fr"
+      date: "May 2024 - August 2024"
+      info:
+        enable: true
+        content: 10 Weeks Internship
+      badges:
+        - name: "SQL"
+        - name: "Postgres"
+        - name: "GraphQL"
+        - name: "Hasura"
+        - name: "Moodle"
+        - name: "PHP"
+        - name: "REST APIs"
+        - name: "NextJS"
+        - name: "Convex"
+      content: |-
+        Investigating migration from the existing [Moodle REST API](https://docs.moodle.org/dev/Web_service_API_functions) to a Hasura GraphQL API to eliminate over-fetching and under-fetching of data.
+
+    - job: "Software Developer"
+      company: "VITsolutions"
+      companyUrl: "https://www.vitsolutions.eu/"
+      date: "July 2023 - August 2023"
+      info:
+        enable: true
+        content: 8 Weeks Internship
+      badges:
+        - name: "React"
+        - name: "SharePoint"
+        - name: "Microsoft POWERAPPS"
+        - name: "PHP"
+      content: |-
+        - Built a SharePoint React Gantt chart webpart for a SharePoint site.
+        - Developed Microsoft POWERAPPS Application for a client.
+
+# Education
+education:
+  items:
+    - title: "Engineering school - SEOC specialization"
+      school:
+        name: "PHELMA - Grenoble INP"
+        url: "https://phelma.grenoble-inp.fr/"
+      date: "2022 - 2025"
+      content: Engineering school in Physics, Electronics and Materials.
+    - title: "Preparatory classes"
+      school:
+        name: "Lycée Mohammed VI d'excellence - Ben Guerir"
+        url: "https://www.firsi.org/soutien-a-l-enseignement-d-excellence/lycee-mohammed-vi-d-excellence"
+      date: "2020 - 2022"
+      content: Intensive undergraduate studies Technical Sciences and Technologies specialization (TSI). Includes a strong foundation in mathematics, electronics and control systems.
+    - title: "Baccalauréat STE"
+      school:
+        name: "Lycée Les Orangers - Rabat"
+      date: "2017 - 2020"
+      content: Scientific baccalaureate with high honors.
+
+# Skills
+skills:
+  title: "Skills"
+  categories:
+    index: true
+    items:
+      - title: "Embedded Systems & Low-Level Development"
+        skills:
+          index: true
+          items:
+            - name: "C"
+              proficiency: 90
+              learnedFrom:
+                index: true
+                items:
+                  - type: "Project"
+                    name: "C Spell Checker"
+                  - type: "Project"
+                    name: "C Messaging Client"
+                  - type: "Project"
+                    name: "Pathfinding algorithms in C"
+                  - type: "Project"
+                    name: "NXP CUP CAR Control Software"
+            - name: "Microcontroller Programming"
+              proficiency: 80
+              learnedFrom:
+                index: true
+                items:
+                  - type: "Project"
+                    name: "NXP CUP CAR Control Software"
+                  - type: "School"
+                    name: "PHELMA Coursework (TI MSP430)"
+                  - type: "School"
+                    name: "Preparatory Classes - TIPE (Arduino)"
+            - name: "Multithreading & Thread Communication"
+              proficiency: 55
+              learnedFrom:
+                index: true
+                items:
+                  - type: "Project"
+                    name: "C Messaging Client"
+            - name: "GDB / Valgrind (Debugging)"
+              proficiency: 70
+              learnedFrom:
+                index: true
+                items:
+                  - name: "Qorvo Internship"
+                  - type: "School"
+                    name: "PHELMA Projects"
+            - name: "C++"
+              proficiency: 60
+              learnedFrom:
+                index: true
+                items:
+                  - name: "Qorvo Internship"
+            - name: "Zephyr"
+              proficiency: 30
+              learnedFrom:
+                index: true
+                items:
+                  - name: "Qorvo Internship"
+            - name: "FreeRTOS"
+              proficiency: 60
+              learnedFrom:
+                index: true
+                items:
+                  - type: "Project"
+                    name: "NXP CUP CAR Control Software"
+            - name: "Control Systems / State Representation"
+              proficiency: 40
+              learnedFrom:
+                index: true
+                items:
+                  - type: "Project"
+                    name: "NXP CUP CAR Control Software"
+
+      - title: "Software Engineering & Programming Fundamentals"
+        skills:
+          index: true
+          items:
+            - name: "Object-Oriented Programming (OOP)"
+              proficiency: 70
+              learnedFrom:
+                index: true
+                items:
+                  - type: "Project"
+                    name: "Multi-agent system in Java"
+                  - name: "Qorvo Internship"
+                  - type: "Project"
+                    name: "Java based DECA Compiler"
+            - name: "Benchmarking"
+              proficiency: 70
+              learnedFrom:
+                index: true
+                items:
+                  - type: "Project"
+                    name: "C Spell Checker"
+                  - name: "Qorvo Internship"
+                  - type: "Project"
+                    name: "C Pathfinding algorithms"
+            - name: "Python"
+              proficiency: 50
+              learnedFrom:
+                index: true
+                items:
+                  - type: "School"
+                    name: "Preparatory Classes"
+                  - name: "Qorvo Internship"
+                  - name: "Leetcode"
+            - name: "Rust"
+              proficiency: 30
+              learnedFrom:
+                index: true
+                items:
+                  - type: "Event"
+                    name: "Advent Of Code 2024"
+
+# Projects
+projects:
+  items:
+    - title: NXP CUP CAR Control Software
+      content: Worked in a team of 2 to build C-based Realtime Control Software for the NXP CUP CAR using FreeRTOS. We used interrupts to handle sensors input (wheel encoders + 2D camera) and implemented feedback loop control algorithms to control wheel's speed and direction with FreeRTOS scheduled tasks.
+      badges:
+        - name: "School project"
+          color: "text-bg-primary"
+        - name: "C"
+        - name: "Realtime programming"
+        - name: "FreeRTOS"
+        - name: "Interrupts"
+        - name: "Control systems"
+    - title: Developed a compiler for the DECA language in Java
+      content: Worked in a team of 5 mixed Phelma and Ensimag students to build a compiler for the DECA language. We also developed an extension of the language to facilitate the development of Gameboy games.
+      badges:
+        - name: "School project"
+          color: "text-bg-primary"
+        - name: "Java"
+        - name: "Maven"
+        - name: "ANTLR"
+        - name: "JUnit 4"
+        - name: "Mockito"
+        - name: "Gameboy assembly"
+    - title: C Spell Checker
+      content: "Worked in a team of 4 on implementing and benchmarking various spellchecking algorithms and data structures with C.\ne.g: resizable arrays, linked lists, hash sets, trees, Tries. DFS, BFS."
+      badges:
+        - name: "School project"
+          color: "text-bg-primary"
+        - name: "C"
+        - name: "Makefile"
+        - name: "Algorithms"
+        - name: "Data structures"
+    - title: Pathfinding algorithms in C
+      content: "Worked in a team of 3 on implementing different Pathfinding algorithms(DFS, BFS and Dijkstra) in C and benchmarking them on a map of train stations."
+      badges:
+        - name: "School project"
+          color: "text-bg-primary"
+        - name: "C"
+        - name: "Makefile"
+        - name: "DFS"
+        - name: "BFS"
+        - name: "Dijkstra"
+    - title: Simulating a Multi-agent system in Java
+      content: Worked in a team of 3 on simulating multi-agent systems in Java Cellular Automata and Boids with predator-prey behavior, showcasing object-oriented design and event-driven programming.
+      badges:
+        - name: "School project"
+          color: "text-bg-primary"
+        - name: "Java"
+        - name: "OOP"
+        - name: "Event-driven programming"
+    - title: CVE Vulnerability Analysis and Reproduction
+      content: "Worked in a team of 3 to analyze two real-world CVEs: [CVE-2024-23724](https://nvd.nist.gov/vuln/detail/CVE-2024-23724) and [CVE-2024-47175](https://nvd.nist.gov/vuln/detail/CVE-2024-47175). Reproduced the vulnerabilities in a controlled environment, developed proof-of-concept exploits, and delivered a technical report explaining their root causes, impact, and mitigation strategies."
+      badges:
+        - name: "School project"
+          color: "text-bg-primary"
+        - name: "CVE"
+        - name: "Docker"
+        - name: "Linux"
+        - name: "Security"
+        - name: "Vulnerability Analysis"
+    - title: FSM-Based Digital Filter in VHDL
+      content: Designed and implemented an FSM-based digital filter in VHDL as part of a two-person team. Simulated with ModelSim, verified synthesizability with SpyGlass, synthesized with Precision RTL, and deployed on a Xilinx Spartan-3 FPGA using Xilinx ISE. Successfully tested and validated the design on hardware.
+      badges:
+        - name: "School project"
+          color: "text-bg-primary"
+        - name: "VHDL"
+        - name: "ModelSim"
+        - name: "SpyGlass"
+        - name: "Precision RTL"
+        - name: "Xilinx ISE"
+    - title: C Messaging Client
+      content: "Worked in a team of 2 on implementing a messaging client for an existing server in C using System V IPC mechanisms."
+      badges:
+        - name: "School project"
+          color: "text-bg-primary"
+        - name: "C"
+        - name: "CMake"
+        - name: "System V IPC"
+        - name: "Multithreading"
+        - name: "Multiprocessing"
+        - name: "Mutex"
+        - name: "Semaphore"
+    - title: Chamilo Sync Kotlin Android App
+      content: Developed a Kotlin Android app to synchronize contents of courses from Chamilo with Local storage. Used Dagger Hilt for dependency injection, OKHttp for network requests, Room and Coroutines for asynchronous programming.
+      badges:
+        - name: "Kotlin"
+        - name: "Jetpack Compose"
+        - name: "Dagger Hilt"
+        - name: "Room Database"
+    - title: Advent of Code 2024
+      content: Participated in the Advent of Code 2024 and learned the Rust programming language.
+      badges:
+        - name: "Rust"
+        - name: "Algorithms"
+        - name: "Data structures"
+      links:
+        - icon: fab fa-github
+          url: https://github.com/yassine-safraoui/advent-of-code-2024
+    - title: Hugo Profile
+      content: A highly customizable and mobile first Hugo template for personal portfolio and blog.
+      badges:
+        - name: "Hugo"
+        - name: "Bootstrap"
+        - name: "Javascript"
+      links:
+        - icon: fab fa-github
+          url: https://github.com/gurusabarish/hugo-profile # TODO: Change this to your repository
+    - title: Kotlin Springboot API typesafe React frontend
+      content: Showcased how to use a Kotlin/Java Springboot backend with a React frontend while ensuring typesafe API calls using OpenAPI.
+      badges:
+        - name: "Kotlin"
+        - name: "Springboot"
+        - name: "Orval"
+        - name: "React"
+        - name: "Typescript"
+        - name: "TailwindCSS"
+        - name: "TanStack Query"
+      links:
+        - icon: fab fa-github
+          url: https://github.com/yassine-safraoui/spring-boot-react-openapi
+
+contact:
+  content: My inbox is always open. Whether you have a question or just want to say hi, I’ll try my best to get back to you!
+  email: yassine.safraoui@phelma.grenoble-inp.fr
+  github: https://github.com/yassine-safraoui
+  linkedin: https://www.linkedin.com/in/yassine-safraoui-226993200/

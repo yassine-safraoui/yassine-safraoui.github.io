@@ -6,7 +6,6 @@ import astro from "eslint-plugin-astro";
 import prettier from "eslint-plugin-prettier";
 import eslintPluginBetterTailwindcss from "eslint-plugin-better-tailwindcss";
 
-
 // parsers
 const tsParser = tseslint.parser;
 const astroParser = astro.parser;
@@ -27,9 +26,7 @@ export default defineConfig([
   tseslint.configs.recommended,
   {
     // enable all recommended rules
-    extends: [
-      eslintPluginBetterTailwindcss.configs.recommended
-    ],
+    extends: [eslintPluginBetterTailwindcss.configs.recommended],
 
     // if needed, override rules to configure them individually
     // rules: {
@@ -41,8 +38,8 @@ export default defineConfig([
         // tailwindcss 4: the path to the entry file of the css based tailwind config (eg: `src/global.css`)
         entryPoint: "src/styles/global.css",
         // tailwindcss 3: the path to the tailwind config file (eg: `tailwind.config.js`)
-        tailwindConfig: "tailwind.config.js"
-      }
+        tailwindConfig: "tailwind.config.js",
+      },
     },
 
     files: ["**/*.astro"],

@@ -1,0 +1,102 @@
+---
+import profile from "../pages/profile";
+import { marked } from "marked";
+
+const skills = profile.skills;
+const categories =
+  skills.categories.index === false ? [] : (skills.categories.items ?? []);
+
+const renderSourceName = async (name: string) =>
+  (await marked.parseInline(name)).replaceAll("<a ", "<a data-skills-link ");
+---
+
+<style>
+  #skills [data-skills-link] {
+    color: var(--text-link-color);
+    text-decoration: underline;
+    text-decoration-color: var(--text-link-color);
+  }
+</style>
+
+<section id="skills" class="py-8">
+  <div class="prose mx-auto w-full max-w-360 px-3 sm:px-5">
+    <div class="mb-4">
+      <h1 class="w-full text-center text-(--text-color)">
+        {skills.title}
+      </h1>
+    </div>
+
+    <div class="space-y-10">
+      {
+        categories.map((category) => {
+          const skillItems =
+            category.skills.index === false
+              ? []
+              : (category.skills.items ?? []);
+
+          return (
+            <section class="prose-h2:font-medium prose-h2:text-[1.7rem]">
+              <h2 class="my-5 text-(--text-color)">{category.title}</h2>
+              <div class="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
+                {skillItems.map(async (skill) => {
+                  const proficiency = Math.max(
+                    0,
+                    Math.min(100, Math.trunc(skill.proficiency ?? 0)),
+                  );
+                  const showLearnedFrom =
+                    skill.learnedFrom.index !== false &&
+                    (skill.learnedFrom.items?.length ?? 0) > 0;
+
+                  return (
+                    <article class="h-full rounded-lg border border-gray-500/50 p-3 dark:border-gray-500/60">
+                      <div class="mb-2 flex items-center justify-between gap-3">
+                        <span class="max-w-[80%] text-xl font-semibold text-(--text-color)">
+                          {skill.name}
+                        </span>
+                        <span class="text-sm text-(--text-secondary-color)">
+                          {proficiency}%
+                        </span>
+                      </div>
+
+                      <div
+                        class="mt-4 mb-2 h-1.5 rounded-full bg-gray-300 dark:bg-gray-600"
+                        aria-label={`${skill.name} proficiency`}
+                      >
+                        <div
+                          class="h-full rounded-full bg-(--primary-color-light)"
+                          role="progressbar"
+                          style={`width: ${proficiency}%;`}
+                          aria-valuenow={proficiency}
+                          aria-valuemin="0"
+                          aria-valuemax="100"
+                        />
+                      </div>
+
+                      {showLearnedFrom ? (
+                        <ul class="mt-3 list-disc pl-4 text-[0.9rem]/7 text-(--text-secondary-color)">
+                          {skill.learnedFrom.items.map(async (source) => (
+                            <li>
+                              {source.type ? (
+                                <>
+                                  <span>{source.type}</span>
+                                  {source.name ? ": " : ""}
+                                </>
+                              ) : null}
+                              <Fragment
+                                set:html={await renderSourceName(source.name)}
+                              />
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
+                    </article>
+                  );
+                })}
+              </div>
+            </section>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,195 @@
+---
+import profile from "../pages/profile";
+import { marked } from "marked";
+
+const experience = profile.experience;
+
+const items = await Promise.all(
+  experience.items.map(async (item) => ({
+    ...item,
+    contentHtml: (await marked(item.content)).replaceAll(
+      "<a ",
+      "<a data-experience-link ",
+    ),
+  })),
+);
+---
+
+<style>
+  #experience [data-experience-link] {
+    color: var(--text-link-color);
+    text-decoration: underline;
+    text-decoration-color: var(--text-link-color);
+  }
+
+  #experience [data-experience-content] > :first-child {
+    margin-top: 0;
+  }
+
+  #experience [data-experience-content] > :last-child {
+    margin-bottom: 0;
+  }
+</style>
+
+<section
+  id="experience"
+  class="bg-transparent px-4 py-12 transition-colors duration-300"
+>
+  <div
+    class="prose prose-a:text-(--text-link-color) prose-strong:text-(--text-link-color) mx-auto max-w-6xl"
+  >
+    <div class="mb-16 text-center">
+      <h1 class="w-full text-center text-(--text-color)">
+        {experience.title}
+      </h1>
+    </div>
+
+    <div class="relative space-y-8">
+      <div
+        id="timeline-line"
+        data-timeline-line
+        class="absolute left-16 z-0 hidden w-0.5 bg-gray-400/50 lg:block"
+      >
+      </div>
+
+      {
+        items.map((item) => (
+          <article class="relative" data-experience-item>
+            <div class="flex flex-col items-stretch lg:flex-row">
+              <div class="mb-4 flex w-full items-center pr-2 lg:mb-0 lg:w-72">
+                <div class="relative z-10 inline-flex w-full items-center gap-2 rounded-full border border-(--text-secondary-color)/50 bg-(--background-color) px-6 py-3 shadow-md transition-shadow duration-300 hover:shadow-lg">
+                  <svg
+                    class="size-4 text-(--text-secondary-color)"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="4" width="18" height="18" rx="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
+                  </svg>
+                  <span class="text-sm font-semibold whitespace-nowrap text-(--text-color)">
+                    {item.date}
+                  </span>
+                </div>
+              </div>
+
+              <div class="flex-1 lg:pl-2">
+                <div class="rounded-xl border border-gray-500/50 bg-(--background-color) shadow-lg transition-all duration-300 hover:shadow-xl">
+                  <header class="p-6 pb-4">
+                    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                      <div>
+                        <h4 class="mb-2 text-xl font-bold text-(--text-color) mt-2">
+                          {item.job}
+                        </h4>
+                        <div class="flex items-center gap-2 text-base text-(--text-secondary-color)">
+                          <svg
+                            class="size-4 text-(--text-secondary-color)"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.75"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0Z" />
+                            <circle cx="12" cy="10" r="3" />
+                          </svg>
+                          <a
+                            href={item.companyUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            class="text-(--text-link-color) transition-colors duration-200 hover:underline hover:brightness-110"
+                          >
+                            {item.company}
+                            <span class="inline-block pl-1">
+                              <svg
+                                class="size-3 text-(--text-secondary-color)"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                              >
+                                <path d="M7 17 17 7" />
+                                <path d="M7 7h10v10" />
+                              </svg>
+                            </span>
+                          </a>
+                        </div>
+                      </div>
+                      {item.info.enable ? (
+                        <span class="inline-flex items-center rounded-full border border-(--primary-color)/50 px-4 py-2 text-sm font-medium text-(--primary-color)/80">
+                          {item.info.content}
+                        </span>
+                      ) : null}
+                    </div>
+                  </header>
+
+                  <div class="px-6 pb-6">
+                    <div
+                      class="mb-3 max-w-none leading-relaxed font-normal text-(--text-color)"
+                      data-experience-content
+                      set:html={item.contentHtml}
+                    />
+                    <div class="flex flex-wrap gap-2">
+                      {item.badges.map((badge) => (
+                        <span class="inline-flex items-center rounded-full bg-(--secondary-background-color)/50 px-2.5 py-1 text-xs font-medium text-(--text-link-color) ring-1 ring-(--secondary-color)/30 ring-inset">
+                          {badge.name}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  const timelineLine = document.querySelector("[data-timeline-line]");
+  const experienceItems = document.querySelectorAll("[data-experience-item]");
+  const timelineParent = timelineLine?.parentElement;
+
+  const positionTimelineLine = () => {
+    if (!timelineLine || !timelineParent || experienceItems.length === 0) {
+      return;
+    }
+
+    const firstItem = experienceItems[0];
+    const lastItem = experienceItems[experienceItems.length - 1];
+
+    if (!firstItem || !lastItem) {
+      return;
+    }
+
+    const start = firstItem.getBoundingClientRect().height / 2;
+    const end = lastItem.getBoundingClientRect().height / 2;
+    const height = timelineParent.getBoundingClientRect().height - start - end;
+
+    timelineLine.style.height = `${height}px`;
+    timelineLine.style.top = `${start}px`;
+  };
+
+  positionTimelineLine();
+
+  let timeoutId = null;
+  window.addEventListener("resize", () => {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    timeoutId = window.setTimeout(positionTimelineLine, 100);
+  });
+</script>

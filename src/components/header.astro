@@ -1,0 +1,252 @@
+---
+import { Moon, Sun, Menu } from "@lucide/astro";
+interface Props {
+  name: string;
+}
+const { name } = Astro.props;
+
+const navItems = [
+  { href: "/#about", title: "About Me" },
+  { href: "/#experience", title: "Experiences" },
+  { href: "/#education", title: "Education" },
+  { href: "/#projects", title: "Projects" },
+  { href: "/#contact", title: "Contact" },
+  { href: "/blogs", title: "Blog" },
+];
+---
+
+<style>
+  header {
+    position: sticky;
+    top: -85px;
+    z-index: 10;
+    transition: top 0.3s ease-in-out;
+  }
+
+  .showHeaderOnTop {
+    top: 0;
+    box-shadow: 0px 8px 56px rgba(15, 80, 100, 0.16);
+  }
+
+  @media (max-width: 1023px) {
+    [data-menu][data-open="false"][data-animating="false"] {
+      display: none;
+    }
+
+    [data-menu][data-animating="true"] {
+      height: 0;
+      overflow: hidden;
+      transition: height 0.35s ease;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    [data-menu] {
+      display: block !important;
+      height: auto !important;
+      overflow: visible !important;
+    }
+  }
+</style>
+
+<script>
+  const MOBILE_MQ = "(max-width: 1023px)";
+  let profileHeaderElem: HTMLElement;
+  let menuElem: HTMLElement;
+  let menuToggleElem: HTMLButtonElement;
+  let themeToggleElem: HTMLButtonElement | null = null;
+
+  const updateTheme = () => {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const savedTheme = localStorage.getItem("pref-theme");
+    const shouldUseDark = savedTheme ? savedTheme === "dark" : prefersDark;
+    document.body.classList.toggle("dark", shouldUseDark);
+    document.documentElement.classList.toggle("dark", shouldUseDark);
+  };
+
+  const toggleTheme = () => {
+    const isDark = document.body.classList.contains("dark");
+    const nextTheme = isDark ? "light" : "dark";
+    document.body.classList.toggle("dark", nextTheme === "dark");
+    document.documentElement.classList.toggle("dark", nextTheme === "dark");
+    localStorage.setItem("pref-theme", nextTheme);
+  };
+
+  let prevScrollPos = window.pageYOffset;
+  const handleHeaderScroll = () => {
+    const isMobile = window.matchMedia(MOBILE_MQ).matches;
+    if (
+      isMobile &&
+      (menuElem.dataset.animating === "true" ||
+        menuElem.dataset.open === "true")
+    ) {
+      return;
+    }
+    const currentScrollPos = window.pageYOffset;
+    const showNavBarOnScrollUp = true;
+    const showNavBar = showNavBarOnScrollUp
+      ? prevScrollPos > currentScrollPos
+      : currentScrollPos > 0;
+    const resetHeaderStyle = currentScrollPos === 0 || !showNavBar;
+    if (showNavBar) {
+      profileHeaderElem.classList.add("showHeaderOnTop");
+    }
+    if (resetHeaderStyle) {
+      profileHeaderElem.classList.remove("showHeaderOnTop");
+    }
+    prevScrollPos = currentScrollPos;
+  };
+
+  const handleMenuToggle = () => {
+    if (!window.matchMedia(MOBILE_MQ).matches) return;
+    if (menuElem.dataset.animating === "true") return;
+
+    const isShown = menuElem.dataset.open === "true";
+    if (isShown) {
+      menuElem.style.height = `${menuElem.getBoundingClientRect().height}px`;
+      void menuElem.offsetHeight;
+      menuElem.dataset.animating = "true";
+      menuElem.dataset.open = "false";
+      menuToggleElem.setAttribute("aria-expanded", "false");
+      requestAnimationFrame(() => {
+        menuElem.style.height = "0px";
+      });
+      const onCloseTransitionEnd = (event: TransitionEvent) => {
+        if (event.target !== menuElem || event.propertyName !== "height")
+          return;
+        menuElem.dataset.animating = "false";
+        menuElem.style.height = "";
+        menuElem.removeEventListener("transitionend", onCloseTransitionEnd);
+      };
+      menuElem.addEventListener("transitionend", onCloseTransitionEnd);
+      return;
+    }
+
+    menuElem.dataset.animating = "true";
+    menuElem.dataset.open = "false";
+    menuElem.style.height = "0px";
+    menuToggleElem.setAttribute("aria-expanded", "true");
+    requestAnimationFrame(() => {
+      menuElem.style.height = `${menuElem.scrollHeight}px`;
+    });
+    const onExpandTransitionEnd = (event: TransitionEvent) => {
+      if (event.target !== menuElem || event.propertyName !== "height") return;
+      menuElem.dataset.animating = "false";
+      menuElem.dataset.open = "true";
+      menuElem.style.height = "";
+      menuElem.removeEventListener("transitionend", onExpandTransitionEnd);
+    };
+    menuElem.addEventListener("transitionend", onExpandTransitionEnd);
+  };
+
+  const updateMenuForViewport = () => {
+    const isMobile = window.matchMedia(MOBILE_MQ).matches;
+    menuElem.style.height = "";
+    if (isMobile) {
+      menuElem.dataset.animating = "false";
+      menuElem.dataset.open = "false";
+      menuToggleElem.setAttribute("aria-expanded", "false");
+      return;
+    }
+    menuElem.dataset.animating = "false";
+    menuElem.dataset.open = "true";
+    menuToggleElem.setAttribute("aria-expanded", "true");
+  };
+
+  const initHeader = () => {
+    const profileHeader = document.getElementById("profileHeader");
+    const menu = document.querySelector<HTMLElement>("[data-menu]");
+    const menuToggle = document.querySelector("[data-menu-toggle]");
+    if (
+      !(profileHeader instanceof HTMLElement) ||
+      !(menu instanceof HTMLElement) ||
+      !(menuToggle instanceof HTMLButtonElement)
+    ) {
+      return;
+    }
+
+    profileHeaderElem = profileHeader;
+    menuElem = menu;
+    menuToggleElem = menuToggle;
+    themeToggleElem = document.getElementById(
+      "theme-toggle",
+    ) as HTMLButtonElement | null;
+
+    updateTheme();
+    window.addEventListener("scroll", handleHeaderScroll, { passive: true });
+    menuToggleElem.addEventListener("click", handleMenuToggle);
+    updateMenuForViewport();
+    window.addEventListener("resize", updateMenuForViewport);
+    if (themeToggleElem instanceof HTMLButtonElement) {
+      themeToggleElem.addEventListener("click", toggleTheme);
+    }
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initHeader);
+  } else {
+    initHeader();
+  }
+</script>
+
+<header id="profileHeader" class="bg-(--background-color)">
+  <nav class="w-full py-3">
+    <div class="mx-12 flex flex-wrap items-center justify-between px-3">
+      <a
+        class="flex items-center gap-2 text-[1.2rem] leading-normal font-semibold text-(--primary-color)"
+        href="/"
+      >
+        <img src="/favicon.png" width="30" height="30" alt="" />
+        <span>{name}</span>
+      </a>
+      <button
+        class="inline-flex cursor-pointer items-center justify-center rounded-md p-2 text-(--text-color) focus:outline-none focus-visible:ring-2 focus-visible:ring-(--primary-color) lg:hidden"
+        type="button"
+        data-menu-toggle
+        aria-controls="navbarContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        ><Menu />
+      </button>
+      <div
+        id="navbarContent"
+        data-menu
+        data-open="false"
+        data-animating="false"
+        class="order-3 w-full lg:order-0 lg:block lg:w-auto"
+      >
+        <ul
+          class="flex w-full flex-col items-center gap-4 bg-(--background-color) py-6 text-center text-[1.2rem] leading-normal text-(--text-color) lg:w-auto lg:flex-row lg:bg-transparent lg:py-0"
+        >
+          {
+            navItems.map((item) => (
+              <li class="py-2 font-medium opacity-95">
+                <a
+                  class="hover:text-(--primary-color)"
+                  href={item.href}
+                  aria-label={item.title.toLowerCase()}
+                  title={item.title}
+                >
+                  {item.title}
+                </a>
+              </li>
+            ))
+          }
+          <li class="py-2 font-medium opacity-95">
+            <button
+              id="theme-toggle"
+              class="inline-flex h-10 w-10 items-center justify-center rounded-full text-(--text-color) hover:text-(--primary-color)"
+              type="button"
+              aria-label="Toggle theme"
+            >
+              <Moon class="size-5 dark:hidden" />
+              <Sun class="hidden size-5 dark:block" />
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
