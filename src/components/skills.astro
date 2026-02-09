@@ -35,7 +35,7 @@ const renderSourceName = async (name: string) =>
               : (category.skills.items ?? []);
 
           return (
-            <section class="prose-h2:font-medium prose-h2:text-[1.7rem]">
+            <section class="prose-h2:text-[1.7rem] prose-h2:font-medium">
               <h2 class="my-5 text-(--text-color)">{category.title}</h2>
               <div class="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
                 {skillItems.map(async (skill) => {

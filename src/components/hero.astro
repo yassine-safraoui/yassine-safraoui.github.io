@@ -80,7 +80,7 @@ const hero = {
           {hero.title}
         </h2>
         <h3
-          class="text-[clamp(40px,8vw,60px)] text-(--text-color) opacity-50 dark:text-white leading-18"
+          class="text-[clamp(40px,8vw,60px)]/18 text-(--text-color) opacity-50 dark:text-white"
         >
           I’m an Embedded Systems (<a
             href={hero.subtitleLink.href}
@@ -91,7 +91,7 @@ const hero = {
           >) engineering graduate from Grenoble INP – Phelma. I’m seeking a
           permanent position as an embedded systems engineer.
         </h3>
-        <div class="flex flex-wrap items-center gap-3 mt-8">
+        <div class="mt-8 flex flex-wrap items-center gap-3">
           <a
             href={hero.resume.href}
             class="inline-block rounded-xl border border-(--primary-color) px-7 py-[0.7rem] text-(--text-color) transition-none hover:bg-(--secondary-color) hover:text-(--text-color) hover:opacity-90 focus:shadow-none"
