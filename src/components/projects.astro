@@ -1,0 +1,120 @@
+---
+import { Icon } from "astro-icon/components";
+import { marked } from "marked";
+import profile from "../pages/profile";
+
+const projects = {
+  title: "Projects",
+  items: await Promise.all(
+    profile.projects.items.map(async (item) => ({
+      ...item,
+      contentHtml: (
+        await marked(item.content.replaceAll("\n", "<br />"))
+      ).replaceAll("<a ", "<a data-project-link "),
+    })),
+  ),
+};
+
+const getIconName = (iconClass: string) => {
+  if (iconClass.includes("github")) {
+    return "simple-icons:github";
+  }
+  if (iconClass.includes("linkedin")) {
+    return "simple-icons:linkedin";
+  }
+  return "lucide:external-link";
+};
+---
+
+<style>
+  #projects [data-project-card] {
+    min-height: 400px;
+  }
+
+  #projects [data-project-card]:hover {
+    transform: translateY(-7px);
+  }
+
+  #projects [data-project-image] {
+    object-fit: cover;
+  }
+
+  #projects [data-project-card]:hover [data-project-image] {
+    transform: scale(1.2);
+  }
+
+  #projects [data-project-link] {
+    color: var(--text-link-color);
+    text-decoration: underline;
+    text-decoration-color: var(--text-link-color);
+  }
+</style>
+
+<section id="projects" class="py-5">
+  <div class="prose mx-auto w-full max-w-6xl px-3 sm:px-5">
+    <h1 class="text-center text-(--text-color)">
+      {projects.title}
+    </h1>
+
+    <div
+      class="mt-2 grid grid-cols-1 justify-center gap-x-6 gap-y-3 px-3 md:grid-cols-2 md:px-5 lg:grid-cols-3"
+    >
+      {
+        projects.items.map((project) => (
+          <div class="my-3">
+            <article
+              class="my-3 flex h-full flex-col overflow-hidden rounded-2xl bg-(--secondary-background-color) shadow-[0px_8px_56px_rgb(15_80_100/16%)] transition-transform duration-300 hover:shadow-[0_0_11px_rgb(15_80_100/20%)]"
+              title={project.title}
+              data-project-card
+            >
+              <div class="mb-1 bg-transparent p-3">
+                <div class="bg-transparent pb-2 text-[1.08rem]/8">
+                  {project.badges.map((badge) => {
+                    return (
+                      <span
+                        class:list={[
+                          `mx-[1%] inline-flex items-center rounded-md px-2 py-1 text-sm font-bold text-(--text-color)`,
+                          badge.primary
+                            ? "bg-[#0d6efd] text-white"
+                            : "bg-(--background-color)",
+                        ]}
+                      >
+                        {badge.name}
+                      </span>
+                    );
+                  })}
+                </div>
+                <h4 class="mt-1 bg-transparent text-xl/normal text-(--text-color)">
+                  {project.title}
+                </h4>
+                <div
+                  class="prose bg-transparent text-lg/normal text-(--text-secondary-color)"
+                  set:html={project.contentHtml}
+                />
+              </div>
+
+              {project.links?.length ? (
+                <footer class="mt-auto border-t border-white/15 py-3">
+                  {project.links.map((link) => (
+                    <span class="mx-2 my-1 inline-flex">
+                      <a
+                        href={link.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`open ${project.title} link`}
+                        title={link.url}
+                        class="inline-flex rounded-full border border-(--secondary-color) p-2 text-(--secondary-color)"
+                      >
+                        <Icon name={getIconName(link.icon)} class="size-4" />
+                      </a>
+                    </span>
+                  ))}
+                </footer>
+              ) : null}
+            </article>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
