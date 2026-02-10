@@ -1,0 +1,59 @@
+---
+import { marked } from "marked";
+import profile from "../pages/profile";
+
+const contact = {
+  title: "Get in Touch",
+  content: (await marked(profile.contact.content)).replaceAll(
+    "<a ",
+    "<a data-contact-link ",
+  ),
+  email: profile.contact.email,
+};
+---
+
+<style>
+  #contact [data-contact-link] {
+    color: var(--text-link-color);
+    text-decoration: underline;
+    text-decoration-color: var(--text-link-color);
+  }
+
+  #contact [data-contact-button] {
+    transition: opacity 0.3s;
+  }
+
+  #contact [data-contact-button]:hover {
+    opacity: 0.7;
+  }
+</style>
+
+<section id="contact" class="py-5">
+  <div class="prose mx-auto w-full max-w-6xl px-3 sm:px-5">
+    <h1 class="text-center text-(--text-color)">
+      {contact.title}
+    </h1>
+    <div class="px-0 md:px-5 lg:px-5">
+      <div class="flex justify-center md:px-5">
+        <div class="w-full py-3 md:w-8/12">
+          <div
+            class="prose mx-auto text-center text-(--text-secondary-color)"
+            set:html={contact.content}
+          />
+          <div class="pt-3 text-center">
+            <a
+              href={`mailto:${contact.email}`}
+              target="_blank"
+              rel="noreferrer"
+              class="inline-block rounded-lg border border-(--primary-color) bg-(--secondary-color) px-5 py-2 text-(--text-color)"
+              data-contact-button
+            >
+              Get in Touch
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="contact-form-status"></div>
+</section>

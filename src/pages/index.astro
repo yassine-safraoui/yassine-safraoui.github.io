@@ -1,6 +1,9 @@
 ---
 import About from "../components/about.astro";
+import Contact from "../components/contact.astro";
+import Education from "../components/education.astro";
 import Experience from "../components/experience.astro";
+import Footer from "../components/footer.astro";
 import Header from "../components/header.astro";
 import Hero from "../components/hero.astro";
 import Projects from "../components/projects.astro";
@@ -13,6 +16,7 @@ import Layout from "../layouts/Layout.astro";
     background-color: var(--background-color);
     font-family: "hind-guntur", sans-serif;
     font-size: 1rem;
+    scroll-behavior: smooth;
   }
   h1 {
     font-family: "Nobile", sans-serif;
@@ -25,4 +29,7 @@ import Layout from "../layouts/Layout.astro";
   <Skills />
   <Experience />
   <Projects />
+  <Education />
+  <Contact />
+  <Footer />
 </Layout>

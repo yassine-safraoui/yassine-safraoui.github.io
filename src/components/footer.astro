@@ -1,0 +1,69 @@
+---
+import { Icon } from "astro-icon/components";
+import profile from "../pages/profile";
+
+const year = new Date().getFullYear();
+const socialNetworks = [
+  {
+    href: profile.contact.github,
+    label: "github",
+    iconName: "simple-icons:github",
+  },
+  {
+    href: profile.contact.linkedin,
+    label: "linkedin",
+    iconName: "simple-icons:linkedin",
+  },
+];
+---
+
+<style>
+  #footer [data-footer-social] {
+    transition: opacity 0.2s ease;
+  }
+
+  #footer [data-footer-social]:hover {
+    opacity: 0.8;
+  }
+</style>
+
+<footer id="footer" class="py-4">
+  <div class="mx-auto w-full max-w-6xl px-3 sm:px-5">
+    <div class="flex flex-row items-center justify-center gap-1 pt-2">
+      {
+        socialNetworks.map((item) => (
+          <span class="px-1">
+            <a
+              href={item.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={item.label}
+              class="inline-flex rounded-full border border-(--primary-color) p-3 text-(--primary-color)"
+              data-footer-social
+            >
+              <Icon name={item.iconName} class="size-6" />
+            </a>
+          </span>
+        ))
+      }
+    </div>
+    <div
+      class="flex w-full flex-col items-center justify-center py-4 text-center text-(--text-color)"
+    >
+      <div>
+        &copy; {year}
+        {profile.title} All Rights Reserved
+      </div>
+      <div class="text-(--text-secondary-color)">
+        Made with ❤️ and Inspired by <a
+          href="https://github.com/gurusabarish/hugo-profile"
+          target="_blank"
+          rel="noreferrer"
+          class="text-(--text-link-color)"
+        >
+          Hugo Profile
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
