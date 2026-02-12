@@ -20,8 +20,7 @@ import type {
 const DEFAULT_BASE_URL = "https://api.notion.com";
 const DEFAULT_NOTION_VERSION = "2025-09-03";
 const DEFAULT_PAGE_SIZE = 100;
-const CHECKPOINT_META_KEY = "notion:lastEditedCheckpoint";
-const FILTER_FINGERPRINT_META_KEY = "notion:queryFingerprint";
+const PAGE_LAST_EDITED_META_PREFIX = "notion:pageLastEdited:";
 
 export interface NotionLoaderOptions {
 	/**
@@ -106,67 +105,8 @@ function isRecord(value: unknown): value is JsonObject {
 	return typeof value === "object" && value !== null;
 }
 
-function toCompactText(input: unknown): string {
-	if (typeof input === "string") {
-		return input;
-	}
-
-	try {
-		return JSON.stringify(input);
-	} catch {
-		return String(input);
-	}
-}
-
-function maxIsoDate(
-	a: string | undefined,
-	b: string | undefined,
-): string | undefined {
-	if (!a) {
-		return b;
-	}
-
-	if (!b) {
-		return a;
-	}
-
-	return a > b ? a : b;
-}
-
-function buildQueryFilter(
-	baseFilter: QueryDataSourceParameters["filter"] | undefined,
-	checkpoint: string | undefined,
-): QueryDataSourceParameters["filter"] | undefined {
-	if (!checkpoint) {
-		return baseFilter;
-	}
-
-	const syncFilter: QueryDataSourceParameters["filter"] = {
-		timestamp: "last_edited_time",
-		last_edited_time: {
-			on_or_after: checkpoint,
-		},
-	};
-
-	if (!baseFilter) {
-		return syncFilter;
-	}
-
-	return {
-		and: [baseFilter, syncFilter],
-	} as QueryDataSourceParameters["filter"];
-}
-
-function getLatestStoredDigest(
-	storeValues: Array<{ digest?: string | number }>,
-): string | undefined {
-	let latest: string | undefined;
-	for (const entry of storeValues) {
-		if (typeof entry.digest === "string") {
-			latest = maxIsoDate(latest, entry.digest);
-		}
-	}
-	return latest;
+function getPageLastEditedMetaKey(pageId: string): string {
+	return `${PAGE_LAST_EDITED_META_PREFIX}${pageId}`;
 }
 
 async function* queryPages({
@@ -300,58 +240,40 @@ export function notionLoader({
 		1,
 		Math.min(DEFAULT_PAGE_SIZE, page_size),
 	);
-	const queryFingerprint = JSON.stringify({
-		data_source_id,
-		filter_properties: filter_properties ?? null,
-		sorts: sorts ?? null,
-		filter: filter ?? null,
-		archived: archived ?? null,
-		in_trash: in_trash ?? null,
-		page_size: normalizedPageSize,
-	});
 
 	return {
 		name: collectionName ? `notion-loader/${collectionName}` : "notion-loader",
 		schema: notionPageDataSchema,
 		async load({ store, meta, parseData, logger, generateDigest }) {
-			const storedFingerprint = meta.get(FILTER_FINGERPRINT_META_KEY);
-			const previousCheckpointFromMeta = meta.get(CHECKPOINT_META_KEY);
-			const previousCheckpoint =
-				typeof previousCheckpointFromMeta === "string"
-					? previousCheckpointFromMeta
-					: getLatestStoredDigest(store.values());
-
-			const isFullSync =
-				storedFingerprint !== queryFingerprint || !previousCheckpoint;
-			const checkpoint = isFullSync ? undefined : previousCheckpoint;
-			const effectiveFilter = buildQueryFilter(filter, checkpoint);
 			const existingIds = new Set(store.keys());
 
-			logger.info(
-				`${isFullSync ? "Full sync" : "Incremental sync"} for ${data_source_id} ${checkpoint ? `(since ${checkpoint})` : ""}`,
-			);
+			logger.info(`Full enumeration sync for ${data_source_id}`);
 
 			let fetchedCount = 0;
 			let upsertedCount = 0;
+			let skippedCount = 0;
 			let deletedCount = 0;
-			let latestEditedTime = checkpoint;
 
 			for await (const page of queryPages({
 				dataSourceId: data_source_id,
 				pageSize: normalizedPageSize,
 				filterProperties: filter_properties,
 				sorts,
-				filter: effectiveFilter,
+				filter,
 				archived,
 				inTrash: in_trash,
 				client,
 			})) {
 				fetchedCount += 1;
 				existingIds.delete(page.id);
-				latestEditedTime = maxIsoDate(latestEditedTime, page.last_edited_time);
+				const pageLastEditedMetaKey = getPageLastEditedMetaKey(page.id);
+				const previousLastEditedTime = meta.get(pageLastEditedMetaKey);
 
-				const existingEntry = store.get(page.id);
-				if (existingEntry?.digest === page.last_edited_time) {
+				if (
+					previousLastEditedTime === page.last_edited_time &&
+					store.has(page.id)
+				) {
+					skippedCount += 1;
 					continue;
 				}
 
@@ -370,24 +292,19 @@ export function notionLoader({
 						html,
 					},
 				});
+				meta.set(pageLastEditedMetaKey, page.last_edited_time);
 
 				upsertedCount += 1;
 			}
 
-			if (isFullSync) {
-				for (const id of existingIds) {
-					store.delete(id);
-					deletedCount += 1;
-				}
+			for (const id of existingIds) {
+				store.delete(id);
+				meta.delete(getPageLastEditedMetaKey(id));
+				deletedCount += 1;
 			}
-
-			if (latestEditedTime) {
-				meta.set(CHECKPOINT_META_KEY, latestEditedTime);
-			}
-			meta.set(FILTER_FINGERPRINT_META_KEY, queryFingerprint);
 
 			logger.info(
-				`Sync complete: fetched=${fetchedCount}, upserted=${upsertedCount}, deleted=${deletedCount}, checkpoint=${toCompactText(latestEditedTime ?? "none")}`,
+				`Sync complete: fetched=${fetchedCount}, upserted=${upsertedCount}, skipped=${skippedCount}, deleted=${deletedCount}`,
 			);
 		},
 	};
