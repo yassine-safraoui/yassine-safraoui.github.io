@@ -20,6 +20,7 @@ import type {
 const DEFAULT_BASE_URL = "https://api.notion.com";
 const DEFAULT_NOTION_VERSION = "2025-09-03";
 const DEFAULT_PAGE_SIZE = 100;
+const DEFAULT_TIMEOUT_MS = 30_000;
 const PAGE_LAST_EDITED_META_PREFIX = "notion:pageLastEdited:";
 
 export interface NotionLoaderOptions {
@@ -234,6 +235,7 @@ export function notionLoader({
 		auth,
 		notionVersion,
 		baseUrl: clientOptions.baseUrl ?? DEFAULT_BASE_URL,
+		timeoutMs: clientOptions.timeoutMs ?? DEFAULT_TIMEOUT_MS,
 	});
 
 	const normalizedPageSize = Math.max(
