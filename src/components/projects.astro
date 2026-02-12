@@ -4,25 +4,25 @@ import { marked } from "marked";
 import profile from "../pages/profile";
 
 const projects = {
-  title: "Projects",
-  items: await Promise.all(
-    profile.projects.items.map(async (item) => ({
-      ...item,
-      contentHtml: (
-        await marked(item.content.replaceAll("\n", "<br />"))
-      ).replaceAll("<a ", "<a data-project-link "),
-    })),
-  ),
+	title: "Projects",
+	items: await Promise.all(
+		profile.projects.items.map(async (item) => ({
+			...item,
+			contentHtml: (
+				await marked(item.content.replaceAll("\n", "<br />"))
+			).replaceAll("<a ", "<a data-project-link "),
+		})),
+	),
 };
 
 const getIconName = (iconClass: string) => {
-  if (iconClass.includes("github")) {
-    return "simple-icons:github";
-  }
-  if (iconClass.includes("linkedin")) {
-    return "simple-icons:linkedin";
-  }
-  return "lucide:external-link";
+	if (iconClass.includes("github")) {
+		return "simple-icons:github";
+	}
+	if (iconClass.includes("linkedin")) {
+		return "simple-icons:linkedin";
+	}
+	return "lucide:external-link";
 };
 ---
 

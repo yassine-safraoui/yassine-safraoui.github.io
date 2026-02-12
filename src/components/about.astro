@@ -1,17 +1,17 @@
 ---
-import profile from "../pages/profile";
 import { marked } from "marked";
+import profile from "../pages/profile";
 
 const about = {
-  title: "About Me",
-  content: (await marked(profile.about)).replaceAll(
-    "<a ",
-    "<a data-about-link ",
-  ),
-  image: {
-    src: "/me.png",
-    alt: "Embedded systems icon",
-  },
+	title: "About Me",
+	content: (await marked(profile.about)).replaceAll(
+		"<a ",
+		"<a data-about-link ",
+	),
+	image: {
+		src: "/me.png",
+		alt: "Embedded systems icon",
+	},
 };
 
 const hasImage = Boolean(about.image?.src);

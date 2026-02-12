@@ -1,17 +1,17 @@
 ---
-import profile from "../pages/profile";
 import { marked } from "marked";
+import profile from "../pages/profile";
 
 const experience = profile.experience;
 
 const items = await Promise.all(
-  experience.items.map(async (item) => ({
-    ...item,
-    contentHtml: (await marked(item.content)).replaceAll(
-      "<a ",
-      "<a data-experience-link ",
-    ),
-  })),
+	experience.items.map(async (item) => ({
+		...item,
+		contentHtml: (await marked(item.content)).replaceAll(
+			"<a ",
+			"<a data-experience-link ",
+		),
+	})),
 );
 ---
 

@@ -5,37 +5,37 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --text-color-light: #343a40;
-  --text-secondary-color-light: #6c757d;
-  --text-link-color-light: #007bff;
-  --background-color-light: #eaedf0;
-  --secondary-background-color-light: #f8f9fa;
-  --primary-color-light: #007bff;
-  --secondary-color-light: #f8f9fa;
+	--text-color-light: #343a40;
+	--text-secondary-color-light: #6c757d;
+	--text-link-color-light: #007bff;
+	--background-color-light: #eaedf0;
+	--secondary-background-color-light: #f8f9fa;
+	--primary-color-light: #007bff;
+	--secondary-color-light: #f8f9fa;
 
-  --text-color-dark: #e4e6eb;
-  --text-secondary-color-dark: #b0b3b8;
-  --text-link-color-dark: #6ea8fe;
-  --background-color-dark: #18191a;
-  --secondary-background-color-dark: #212529;
-  --primary-color-dark: #ffffff;
-  --secondary-color-dark: #6ea8fe;
+	--text-color-dark: #e4e6eb;
+	--text-secondary-color-dark: #b0b3b8;
+	--text-link-color-dark: #6ea8fe;
+	--background-color-dark: #18191a;
+	--secondary-background-color-dark: #212529;
+	--primary-color-dark: #ffffff;
+	--secondary-color-dark: #6ea8fe;
 
-  --text-color: var(--text-color-light);
-  --text-secondary-color: var(--text-secondary-color-light);
-  --text-link-color: var(--text-link-color-light);
-  --background-color: var(--background-color-light);
-  --secondary-background-color: var(--secondary-background-color-light);
-  --primary-color: var(--primary-color-light);
-  --secondary-color: var(--secondary-color-light);
+	--text-color: var(--text-color-light);
+	--text-secondary-color: var(--text-secondary-color-light);
+	--text-link-color: var(--text-link-color-light);
+	--background-color: var(--background-color-light);
+	--secondary-background-color: var(--secondary-background-color-light);
+	--primary-color: var(--primary-color-light);
+	--secondary-color: var(--secondary-color-light);
 }
 
 .dark {
-  --background-color: var(--background-color-dark);
-  --secondary-background-color: var(--secondary-background-color-dark);
-  --text-color: var(--text-color-dark);
-  --text-secondary-color: var(--text-secondary-color-dark);
-  --text-link-color: var(--text-link-color-dark);
-  --primary-color: var(--primary-color-dark);
-  --secondary-color: var(--secondary-color-dark);
+	--background-color: var(--background-color-dark);
+	--secondary-background-color: var(--secondary-background-color-dark);
+	--text-color: var(--text-color-dark);
+	--text-secondary-color: var(--text-secondary-color-dark);
+	--text-link-color: var(--text-link-color-dark);
+	--primary-color: var(--primary-color-dark);
+	--secondary-color: var(--secondary-color-dark);
 }

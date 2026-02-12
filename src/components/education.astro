@@ -3,16 +3,16 @@ import { marked } from "marked";
 import profile from "../pages/profile";
 
 const education = {
-  title: "Education",
-  items: await Promise.all(
-    profile.education.items.map(async (item) => ({
-      ...item,
-      contentHtml: (await marked(item.content)).replaceAll(
-        "<a ",
-        "<a data-education-content-link ",
-      ),
-    })),
-  ),
+	title: "Education",
+	items: await Promise.all(
+		profile.education.items.map(async (item) => ({
+			...item,
+			contentHtml: (await marked(item.content)).replaceAll(
+				"<a ",
+				"<a data-education-content-link ",
+			),
+		})),
+	),
 };
 ---
 

@@ -1,13 +1,13 @@
 ---
-import profile from "../pages/profile";
 import { marked } from "marked";
+import profile from "../pages/profile";
 
 const skills = profile.skills;
 const categories =
-  skills.categories.index === false ? [] : (skills.categories.items ?? []);
+	skills.categories.index === false ? [] : (skills.categories.items ?? []);
 
 const renderSourceName = async (name: string) =>
-  (await marked.parseInline(name)).replaceAll("<a ", "<a data-skills-link ");
+	(await marked.parseInline(name)).replaceAll("<a ", "<a data-skills-link ");
 ---
 
 <style>
