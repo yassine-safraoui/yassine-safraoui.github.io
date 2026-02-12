@@ -1,0 +1,103 @@
+---
+import { getCollection } from "astro:content";
+import Footer from "../../components/footer.astro";
+import Header from "../../components/header.astro";
+import Layout from "../../layouts/Layout.astro";
+import { getBlogDisplayDate, getBlogSlug } from "../../utils/blog";
+
+const blogsCollection = await getCollection("blog");
+const blogs = [...blogsCollection].sort((a, b) => {
+	const aDate = a.data.properties["Publish Date"]?.start?.getTime() ?? 0;
+	const bDate = b.data.properties["Publish Date"]?.start?.getTime() ?? 0;
+	return bDate - aDate;
+});
+---
+
+<Layout title="Blogs">
+  <div class="flex min-h-screen flex-col">
+    <Header name="Yassine Safraoui" />
+    <main
+      class="mx-auto w-full max-w-5xl flex-1 px-4 py-12 text-(--text-color) sm:px-6"
+    >
+      <section>
+        <h1 class="text-4xl font-semibold text-(--primary-color)">Blog</h1>
+        <p class="mt-3 text-(--text-secondary-color)">
+          I’m an embedded systems engineer with a strong passion for programming
+          and building things that connect software with the real world. You’ll
+          find posts about embedded systems, software development, and
+          occasionally reflections inspired by videos, talks, or concepts that
+          spark new perspectives.
+        </p>
+      </section>
+      <section class="mt-8 flex flex-col gap-5">
+        {
+          blogs.length === 0 ? (
+            <article class="rounded-2xl border border-(--text-secondary-color)/20 bg-(--secondary-background-color) p-6">
+              <p class="text-(--text-secondary-color)">
+                No blogs are out right now, but new posts will be coming soon.
+              </p>
+            </article>
+          ) : (
+            blogs.map((blog) => {
+              const slug = getBlogSlug(blog);
+              const title = blog.data.properties.Title;
+              const category = blog.data.properties.Category ?? "Uncategorized";
+              const tags = blog.data.properties.Tags;
+              const displayDate = getBlogDisplayDate(blog);
+              const excerpt = blog.data.properties["Content Brief"].repeat(10);
+              return (
+                <article class="rounded-2xl border border-(--text-secondary-color)/20 bg-(--secondary-background-color) p-6">
+                  <div class="flex flex-wrap items-center gap-3 text-sm">
+                    <span class="rounded-full bg-(--background-color) px-3 py-1 text-(--primary-color)">
+                      {category}
+                    </span>
+                    {displayDate && (
+                      <time class="text-(--text-secondary-color)">
+                        {displayDate.label} at {displayDate.value}
+                      </time>
+                    )}
+                  </div>
+
+                  <h2 class="mt-4 text-2xl leading-tight font-semibold">
+                    <a
+                      href={`/blogs/${slug}`}
+                      class="text-(--primary-color) hover:underline"
+                    >
+                      {title}
+                    </a>
+                  </h2>
+
+                  <p class="mt-3 line-clamp-2 text-ellipsis text-(--text-secondary-color)">
+                    {excerpt}
+                  </p>
+
+                  <div class="mt-4 flex flex-wrap gap-2">
+                    {tags.length === 0 ? (
+                      <span class="rounded-full border border-(--text-secondary-color)/30 px-3 py-1 text-xs text-(--text-secondary-color)">
+                        No tags
+                      </span>
+                    ) : (
+                      tags.map((tag) => (
+                        <span class="rounded-full border border-(--primary-color)/35 px-3 py-1 text-xs text-(--primary-color)">
+                          {tag}
+                        </span>
+                      ))
+                    )}
+                  </div>
+
+                  <a
+                    href={`/blogs/${slug}`}
+                    class="mt-5 inline-block text-sm font-medium text-(--text-link-color) hover:underline"
+                  >
+                    Read article
+                  </a>
+                </article>
+              );
+            })
+          )
+        }
+      </section>
+    </main>
+    <Footer />
+  </div>
+</Layout>

@@ -1,0 +1,82 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import Footer from "../../components/footer.astro";
+import Header from "../../components/header.astro";
+import Layout from "../../layouts/Layout.astro";
+import { getBlogDisplayDate, getBlogSlug } from "../../utils/blog";
+
+export async function getStaticPaths() {
+	const blogs = await getCollection("blog");
+
+	return blogs.map((blog) => ({
+		params: { slug: getBlogSlug(blog) },
+		props: { blog },
+	}));
+}
+
+interface Props {
+	blog: CollectionEntry<"blog">;
+}
+
+const { blog } = Astro.props;
+const title = blog.data.properties.Title;
+const category = blog.data.properties.Category ?? "Uncategorized";
+const tags = blog.data.properties.Tags;
+const displayDate = getBlogDisplayDate(blog);
+const contentHtml = blog.rendered?.html ?? "<p>No content available yet.</p>";
+---
+
+<Layout title={`${title} | Blog`}>
+  <div class="flex min-h-screen flex-col">
+    <Header name="Yassine Safraoui" />
+    <main
+      class="mx-auto w-full max-w-6xl flex-1 px-4 py-12 text-(--text-color) sm:px-6"
+    >
+      <a href="/blogs" class="text-sm text-(--text-link-color) hover:underline"
+        >Back to all blogs</a
+      >
+      <article class="mt-6">
+        <header>
+          <div class="flex flex-wrap items-center gap-3 text-sm">
+            <span
+              class="rounded-full bg-(--background-color) px-3 py-1 text-(--primary-color)"
+            >
+              {category}
+            </span>
+            {
+              displayDate && (
+                <time class="text-(--text-secondary-color)">
+                  {displayDate.label} at {displayDate.value}
+                </time>
+              )
+            }
+          </div>
+          <h1 class="mt-4 text-4xl font-semibold text-(--primary-color)">
+            {title}
+          </h1>
+          <div class="mt-4 flex flex-wrap gap-2">
+            {
+              tags.length === 0 ? (
+                <span class="rounded-full border border-(--text-secondary-color)/30 px-3 py-1 text-xs text-(--text-secondary-color)">
+                  No tags
+                </span>
+              ) : (
+                tags.map((tag) => (
+                  <span class="rounded-full border border-(--primary-color)/35 px-3 py-1 text-xs text-(--primary-color)">
+                    {tag}
+                  </span>
+                ))
+              )
+            }
+          </div>
+        </header>
+
+        <section
+          class="blog-content prose prose-slate mt-10 max-w-none text-(--text-color) dark:prose-invert prose-headings:text-(--primary-color) prose-a:text-(--text-link-color)"
+          set:html={contentHtml}
+        />
+      </article>
+    </main>
+    <Footer />
+  </div>
+</Layout>
