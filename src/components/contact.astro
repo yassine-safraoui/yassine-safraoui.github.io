@@ -3,12 +3,8 @@ import { marked } from "marked";
 import profile from "../pages/profile";
 
 const contact = {
-  title: "Get in Touch",
-  content: (await marked(profile.contact.content)).replaceAll(
-    "<a ",
-    "<a data-contact-link ",
-  ),
-  email: profile.contact.email,
+	title: "Get in Touch",
+	email: profile.contact.email,
 };
 ---
 
@@ -36,10 +32,10 @@ const contact = {
     <div class="px-0 md:px-5 lg:px-5">
       <div class="flex justify-center md:px-5">
         <div class="w-full py-3 md:w-8/12">
-          <div
-            class="prose mx-auto text-center text-(--text-secondary-color)"
-            set:html={contact.content}
-          />
+          <div class="prose mx-auto text-center text-(--text-secondary-color)">
+            My inbox is always open. Whether you have a question or just want to
+            say hi. <br />I’ll try my best to get back to you!
+          </div>
           <div class="pt-3 text-center">
             <a
               href={`mailto:${contact.email}`}
