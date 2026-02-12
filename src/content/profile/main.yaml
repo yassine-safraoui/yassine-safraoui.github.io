@@ -1,6 +1,9 @@
 title: "Yassine Portfolio"
 description: Yassine Safraoui Portfolio
 
+hero_description: |
+  I’m an Embedded Systems [SEOC](https://phelma.grenoble-inp.fr/en/studies/master-s-degree-in-engineering-grenoble-inp-phelma-embedded-systems-and-connected-devices-seoc#page-presentation) engineering graduate from Grenoble INP – Phelma. I’m seeking a permanent position as an embedded systems engineer.
+
 about: |
   I’m an Embedded Systems engineer graduated from Grenoble INP – Phelma. My background spans low-level development, embedded software, and Linux-based systems, with additional experience in backend and full-stack development. I’m currently seeking a full-time position in embedded systems engineering. Here are the domains I'm interested in:
     - Embedded systems development
@@ -330,7 +333,6 @@ projects:
           url: https://github.com/yassine-safraoui/spring-boot-react-openapi
 
 contact:
-  content: My inbox is always open. Whether you have a question or just want to say hi, I’ll try my best to get back to you!
   email: yassine.safraoui@phelma.grenoble-inp.fr
   github: https://github.com/yassine-safraoui
   linkedin: https://www.linkedin.com/in/yassine-safraoui-226993200/

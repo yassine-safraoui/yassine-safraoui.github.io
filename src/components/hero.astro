@@ -1,15 +1,11 @@
 ---
 import { Icon } from "astro-icon/components";
+import { marked } from "marked";
+import profile from "../pages/profile";
 
 const hero = {
   intro: "Hi, my name is",
   title: "Yassine Safraoui.",
-  subtitle:
-    "I’m an Embedded Systems (SEOC) engineering graduate from Grenoble INP – Phelma. I’m seeking a permanent position as an embedded systems engineer.",
-  subtitleLink: {
-    href: "https://phelma.grenoble-inp.fr/en/studies/master-s-degree-in-engineering-grenoble-inp-phelma-embedded-systems-and-connected-devices-seoc#page-presentation",
-    label: "SEOC",
-  },
   resume: {
     href: "/Yassine_SAFRAOUI_CV.pdf",
     label: "Resume",
@@ -75,22 +71,14 @@ const hero = {
           {hero.intro}
         </span>
         <h2
-          class="mt-[0.2em] mb-[0.1em] text-[clamp(40px,8vw,80px)] text-(--primary-color)"
+          class="mt-[0.2em] text-[clamp(40px,8vw,80px)] text-(--primary-color)"
         >
           {hero.title}
         </h2>
         <h3
-          class="text-[clamp(40px,8vw,60px)]/18 text-(--text-color) opacity-50 dark:text-white"
-        >
-          I’m an Embedded Systems (<a
-            href={hero.subtitleLink.href}
-            class="text-(--text-link-color) underline decoration-(--text-link-color)"
-            data-hero-link
-            target="_blank"
-            rel="noreferrer">{hero.subtitleLink.label}</a
-          >) engineering graduate from Grenoble INP – Phelma. I’m seeking a
-          permanent position as an embedded systems engineer.
-        </h3>
+          class="prose text-[clamp(40px,8vw,60px)]/18 text-(--text-color) opacity-50 dark:text-white"
+          set:html={marked(profile.hero_description)}
+        />
         <div class="mt-8 flex flex-wrap items-center gap-3">
           <a
             href={hero.resume.href}

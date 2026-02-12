@@ -7,6 +7,7 @@ export const profile = defineCollection({
     title: z.string(),
     description: z.string(),
     about: z.string(),
+		hero_description: z.string(),
     experience: z.object({
       title: z.string(),
       items: z.array(
